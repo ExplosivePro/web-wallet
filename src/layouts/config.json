@@ -1,0 +1,21 @@
+{
+	"navigation": [
+		{
+			"title": "intro",
+			"icon": "mdi-view-dashboard",
+			"link": "/home"
+		}, {
+			"title": "wallet",
+			"icon": "mdi-wallet",
+			"link": "/wallet"
+		}, {
+			"title": "settings",
+			"icon": "mdi-cog",
+			"link": "/settings"
+		}, {
+			"title": "contacts",
+			"icon": "mdi-phone",
+			"link": "/contacts"
+		}
+	] 
+}
