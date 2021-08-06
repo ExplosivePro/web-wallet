@@ -13,7 +13,7 @@
     <v-row>
       <v-col sm="12" md="8" offset-md="2">
         <v-card>
-          <v-card-title class="mb-8 secondary">
+          <v-card-title class="mb-8">
             <v-text-field
               append-icon="mdi-magnify"
               :outlined="false"

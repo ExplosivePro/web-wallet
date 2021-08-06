@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import contacts from './modules/contacts.js'
+import contacts from './modules/contacts'
 
 Vue.use(Vuex)
 

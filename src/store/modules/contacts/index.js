@@ -1,4 +1,4 @@
-import apollo from '@/apolloClient'
+import apollo from '@/vue-apollo'
 
 import GET_CONTACTS from './gql/getBulk.gql'
 
