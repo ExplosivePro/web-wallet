@@ -2,5 +2,8 @@
   "intro": "Home",
   "wallet": "Wallet",
   "settings": "Settings",
-  "contacts": "Contacts"
+  "contacts": {
+    "title": "Contacts",
+    "search": "Search by Name, ENS or Address"
+  }
 }

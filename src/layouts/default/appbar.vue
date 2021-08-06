@@ -38,7 +38,6 @@
 			temporary
 			overlay-color="#2E1D59"
 			overlay-opacity=0.8
-
 		>
 			<v-list-item>
 				<v-list-item-content>
@@ -64,7 +63,9 @@
 					:key="item.title"
 					link
 					:to="item.link"
+					active-class="primary--text"
 				>
+				<!--  -->
 					<v-list-item-icon>
 						<v-icon>{{ item.icon ? item.icon : 'mdi-domain'}}</v-icon>
 					</v-list-item-icon>

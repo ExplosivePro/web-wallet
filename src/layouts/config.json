@@ -13,7 +13,7 @@
 			"icon": "mdi-cog",
 			"link": "/settings"
 		}, {
-			"title": "contacts",
+			"title": "contacts.title",
 			"icon": "mdi-phone",
 			"link": "/contacts"
 		}
