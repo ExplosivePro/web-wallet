@@ -3,10 +3,10 @@
     <default-appbar />
 
     <!-- Sizes your content based upon application components -->
-    <v-main>
+    <v-main class="secondary">
 
       <!-- Provides the application the proper gutter -->
-      <v-container fluid class="secondary">
+      <v-container fluid>
 
         <!-- If using vue-router -->
         <router-view></router-view>

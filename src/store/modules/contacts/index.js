@@ -9,7 +9,7 @@ const state = () => ({
 // actions
 const actions = {
 	getContacts ({ commit }, variables = {dictionary: []}) {
-		return apollo.clients.platform.query({
+		return apollo.clients.contacts.query({
 			query: GET_CONTACTS,
 			variables: variables
 		}).then(({ data }) => {

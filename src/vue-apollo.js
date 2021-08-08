@@ -20,46 +20,14 @@ Vue.prototype.$filesRoot = filesRoot
 
 // Config
 const defaultOptions = {
-  // You can use `https` for secure connection (recommended in production)
   httpEndpoint,
-  // You can use `wss` for secure connection (recommended in production)
-  // Use `null` to disable subscriptions
-  // wsEndpoint: process.env.VUE_APP_GRAPHQL_WS || 'ws://localhost/graphql',
-  // LocalStorage token
   tokenName: AUTH_TOKEN,
-  // Enable Automatic Query persisting with Apollo Engine
   persisting: false,
-  // Use websockets for everything (no HTTP)
-  // You need to pass a `wsEndpoint` for this to work
   websocketsOnly: false,
-  // Is being rendered on the server?
   ssr: false,
-
-  // Override default apollo link
-  // note: don't override httpLink here, specify httpLink options in the
-  // httpLinkOptions property of defaultOptions.
-  // link: myLink
-
-  // Override default cache
-  // cache: myCache
-
-  // Override the way the Authorization header is set
-  // getAuth: (tokenName) => ...
-
-  // Additional ApolloClient options
-  // apollo: { ... }
-
-  // Client local data (see apollo-link-state)
-  // clientState: { resolvers: { ... }, defaults: { ... } }
 }
 
-
-
-const contactsLink = createHttpLink({
-    uri: 'http://localhost/graphql/contacts',
-})
-
-const contactsOption = setContext(async (_, {headers}) => {
+const clientOption = setContext(async (_, {headers}) => {
     return {
         headers: {
             ...headers,
@@ -68,30 +36,40 @@ const contactsOption = setContext(async (_, {headers}) => {
     }
 })
 
+function generateClients(client_urls = ['contacts']) {
+  let clients = {}
+
+  for (let i = 0; i < client_urls.length; i++) {
+    const item = client_urls[i]
+    const clientLink = createHttpLink({
+        uri: `${httpEndpoint}/${item}`
+    })
+
+    const client = createApolloClient({
+      ...defaultOptions,
+      link: clientOption.concat(clientLink),
+      cache: new InMemoryCache(),
+    });
+
+    clients[item] = client.apolloClient
+  }
+  return clients
+}
+
+
 
 // Call this in the Vue app file
-export function createProvider (options = {}) {
-  // Create apollo client
-  const { apolloClient } = createApolloClient({
-    ...defaultOptions,
-    ...options,
-  })
+export function createProvider () {
 
-  const contactsClient = createApolloClient({
-    link: contactsOption.concat(contactsLink),
-    cache: new InMemoryCache(),
-    // ...contactsOption,
-  });
-
-  // apolloClient.wsClient = wsClient
-
+  let client_urls = ['contacts']
+  let clients = generateClients(client_urls)
   // Create vue apollo provider
   const apolloProvider = new VueApollo({
     clients: {
-      contacts: contactsClient.apolloClient,
-      default: apolloClient
+      ...clients,
+      default: clients[0]
     },
-    defaultClient: apolloClient,
+    defaultClient: clients[0],
     defaultOptions: {
       $query: {
         // fetchPolicy: 'cache-and-network',
