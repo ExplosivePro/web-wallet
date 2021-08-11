@@ -3,8 +3,6 @@
 		<!-- App Bar -->
 		<v-app-bar
 			app
-			color="white"
-			dark
 		>
 			<div class="d-flex align-center">
 				<v-img
@@ -14,20 +12,13 @@
 					:src="require('@/assets/logo.svg')"
 					transition="scale-transition"
 					width="140"
-					@click.stop="opened = !opened"
 				/>
 			</div>
 
 			<v-spacer></v-spacer>
+			
+			<v-app-bar-nav-icon @click="opened = !opened"></v-app-bar-nav-icon>
 
-			<v-btn
-				href="https://github.com/vuetifyjs/vuetify/releases/latest"
-				target="_blank"
-				text
-			>
-				<span class="mr-2">Latest Release</span>
-				<v-icon>mdi-open-in-new</v-icon>
-			</v-btn>
 		</v-app-bar>
 
 		<!-- Drawer -->

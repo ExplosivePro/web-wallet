@@ -1,9 +1,13 @@
 {
   "intro": "Home",
-  "wallet": "Wallet",
   "settings": "Settings",
   "contacts": {
     "title": "Contacts",
     "search": "Search by Name, ENS or Address"
+  },
+  "wallet": {
+    "title": "Wallet",
+    "search": "Search by Name, ENS or Address"
   }
+
 }

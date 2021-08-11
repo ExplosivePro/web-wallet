@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Contacts from '../views/Contacts/index.vue'
+import Wallet from '../views/Wallet/index.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/contacts',
     name: 'Contacts',
     component: Contacts
+  },
+  {
+    path: '/wallet',
+    name: 'Wallet',
+    component: Wallet
   },
   {
     path: '/about',

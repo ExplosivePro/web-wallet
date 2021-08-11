@@ -1,16 +1,16 @@
 <template>
-  <default-layout>
-  </default-layout>
+  <app-layout>
+  </app-layout>
 </template>
 
 <script>
-import defaultLayout from '@/layouts/default/index'
+import appLayout from '@/layouts/default'
 
 export default {
   name: 'App',
 
   components : {
-    defaultLayout
+    appLayout
   },
   data: () => ({
     //

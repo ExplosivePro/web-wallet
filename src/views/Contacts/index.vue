@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="text-center">
-      <v-col class="mb-12">
+      <v-col class="mb-4">
         <div
           :class="[`text-h4`, `mt-1`, `purple--text`, `text--darken-6`]"
           text="contacts"
@@ -13,7 +13,7 @@
     <v-row>
       <v-col sm="12" md="8" offset-md="2">
         <v-card>
-          <v-card-title class="mb-8">
+          <v-card-title>
             <v-text-field
               append-icon="mdi-magnify"
               :outlined="false"
@@ -24,8 +24,6 @@
           </v-card-title>
         </v-card>
         <v-card>
-          <v-data-table
-          ></v-data-table>
         </v-card>
       </v-col>
     </v-row>

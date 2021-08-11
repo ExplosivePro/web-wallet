@@ -1,0 +1,49 @@
+{
+  Assets {
+    data {
+      id
+      project {
+        uuid
+      }
+      creator {
+        address
+      }
+      supplyModel
+      meltValue
+      meltFeeRatio
+      meltFeeMaxRatio
+      transferable
+      fungible
+      transferFee {
+        type
+        asset {
+          id
+          project {
+            id
+          }
+        }
+        value
+        maxValue
+      }
+      metadata {
+        name
+        description
+        image
+        miniature
+        properties
+      }
+      uri
+      burned
+      flags
+      views
+      createdAt
+      holders {
+        data {
+          address {
+            address
+          }
+        }
+      }
+    }
+  }
+}

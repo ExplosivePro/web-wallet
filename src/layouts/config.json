@@ -5,7 +5,7 @@
 			"icon": "mdi-view-dashboard",
 			"link": "/home"
 		}, {
-			"title": "wallet",
+			"title": "wallet.title",
 			"icon": "mdi-wallet",
 			"link": "/wallet"
 		}, {

@@ -61,7 +61,7 @@ function generateClients(client_urls = ['contacts']) {
 // Call this in the Vue app file
 export function createProvider () {
 
-  let client_urls = ['contacts']
+  let client_urls = ['enjinx', 'contacts']
   let clients = generateClients(client_urls)
   // Create vue apollo provider
   const apolloProvider = new VueApollo({
