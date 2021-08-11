@@ -8,6 +8,12 @@
   "wallet": {
     "title": "Wallet",
     "search": "Search by Name, ENS or Address"
+  },
+  "footer": {
+    "share": "Share",
+    "secureMyWallet": "Secure my Wallet",
+    "whatIsThis": "Help, what is this?",
+    "claim": "Claim"
   }
 
 }

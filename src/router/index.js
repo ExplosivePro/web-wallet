@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import Contacts from '../views/Contacts/index.vue'
 import Wallet from '../views/Wallet/index.vue'
 
+import AssetDetail from '../views/AssetDetail/index.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,6 +23,11 @@ const routes = [
     path: '/wallet',
     name: 'Wallet',
     component: Wallet
+  },
+  {
+    path: '/wallet/assets/:id',
+    name: 'AssetDetail',
+    component: AssetDetail
   },
   {
     path: '/about',

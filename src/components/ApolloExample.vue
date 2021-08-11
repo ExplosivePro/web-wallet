@@ -181,16 +181,16 @@ label {
 }
 
 .image-item {
-  display: flex;
   align-items: center;
-  justify-content: center;
   background: #ccc;
   border-radius: 8px;
+  display: flex;
+  justify-content: center;
 }
 
 .image {
-  max-width: 100%;
   max-height: 100%;
+  max-width: 100%;
 }
 
 .image-input {
