@@ -7,7 +7,8 @@
   },
   "wallet": {
     "title": "Wallet",
-    "search": "Search by Name, ENS or Address"
+    "search": "Search by Name, ENS or Address",
+    "asset": "Assets"
   },
   "footer": {
     "share": "Share",

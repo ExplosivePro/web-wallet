@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Contacts from '../views/Contacts/index.vue'
-import Wallet from '../views/Wallet/index.vue'
+import Contacts from '../views/Contacts'
+import Wallet from '../views/Wallet'
 
-import AssetDetail from '../views/AssetDetail/index.vue'
+import AssetDetail from '../views/Wallet/AssetDetail'
+import Assets from '../views/Wallet/Assets'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [
     path: '/wallet',
     name: 'Wallet',
     component: Wallet
+  },
+  {
+    path: '/wallet/assets',
+    name: 'Assets',
+    component: Assets
   },
   {
     path: '/wallet/assets/:id',
