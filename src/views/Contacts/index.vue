@@ -23,8 +23,9 @@
             ></v-text-field>
           </v-card-title>
         </v-card>
-        <v-card>
-        </v-card>
+
+        <recovery-panel />
+
       </v-col>
     </v-row>
   </v-container>
@@ -32,9 +33,12 @@
 
 <script>
   import { mapState, mapActions } from 'vuex'
+  import RecoveryPanel from '@/components/RecoveryPanel'
 
   export default {
-    
+    components: {
+      RecoveryPanel
+    },
     computed: mapState({
       contacts: state => state.contacts.data
     }),

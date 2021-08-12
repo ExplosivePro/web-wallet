@@ -1,0 +1,13 @@
+query OverviewBalances($addresses: [OverviewAddressInput]!) {
+  OverviewBalances(addresses: $addresses) {
+      chain
+      addresses {
+          address
+          balances {
+            id
+            balance  
+            price 
+          }
+      }
+  }
+}

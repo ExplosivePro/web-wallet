@@ -11,9 +11,9 @@
       </v-col>
     </v-row>
     <v-row>
-        <asset-list-item
-          v-for="item in assets"
-          :key="item.id"
+        <overview-list-item
+          v-for="item in overview"
+          :key="item.chain"
           :data = "item"
         />
     </v-row>
@@ -22,23 +22,23 @@
 
 <script>
   import { mapState, mapActions } from 'vuex'
-  import assetListItem from './components/assetListItem'
+  import OverviewListItem from './components/OverviewListItem'
 
   export default {
     components: {
-      assetListItem
+      OverviewListItem
     },
     computed: mapState({
-      assets: state => state.wallet.assets
+      overview: state => state.wallet.overview
     }),
 
     methods: {
       ...mapActions({
-        getAssets: 'wallet/getAssets'
+        getOverview: 'wallet/getOverview'
       })
     },
     mounted: function() {
-      this.getAssets()
+      this.getOverview()
     }
   }
 </script>

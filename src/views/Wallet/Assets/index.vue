@@ -22,11 +22,11 @@
 
 <script>
   import { mapState, mapActions } from 'vuex'
-  import assetListItem from '../components/assetListItem'
+  import AssetListItem from '../components/AssetListItem'
 
   export default {
     components: {
-      assetListItem
+      AssetListItem
     },
     computed: mapState({
       assets: state => state.wallet.assets
