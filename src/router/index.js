@@ -8,8 +8,6 @@ import CreateWallet from '../views/Wallet/create'
 import AssetDetail from '../views/Wallet/AssetDetail'
 import Assets from '../views/Wallet/Assets'
 
-import store from '@/store';
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -46,6 +44,9 @@ const routes = [
     path: '/wallet',
     name: 'Wallet',
     component: Wallet,
+    meta: {
+      role: 'user'
+    }
   },
   {
     path: '/about',
@@ -75,9 +76,9 @@ const router = new VueRouter({
 
 router.beforeEach(async (to, from, next) => {
 
-  if (to.meta.role === 'user' && store.state.role === 'guest') {
+  if (to.meta.role === 'user' && !localStorage.getItem('wallet-key') ) {
     next({ path: '/wallet/create' })
-  } else if(to.meta.role === 'guest' && store.state.role === 'user') {
+  } else if(to.meta.role === 'guest' && localStorage.getItem('wallet-key')) {
     next({ path: '/wallet' })
   } else {
     next()

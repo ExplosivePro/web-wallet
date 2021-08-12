@@ -15,6 +15,10 @@ const mutations = {
   setTitle (state, data) {
     state.title = data
   },
+
+  setRole (state, data) {
+    state.role = data
+  }
 }
 
 export default new Vuex.Store({

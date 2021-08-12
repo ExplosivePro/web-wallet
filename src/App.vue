@@ -13,7 +13,11 @@ export default {
     AppLayout
   },
   data: () => ({
-    //
-  })
+  }),
+  created() {
+    if (localStorage.getItem('wallet-key')) {
+      this.$store.commit('setRole', 'user')
+    }
+  }
 };
 </script>
