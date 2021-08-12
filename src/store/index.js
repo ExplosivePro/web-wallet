@@ -6,7 +6,20 @@ import wallet from './modules/wallet'
 
 Vue.use(Vuex)
 
+const state = () => ({
+  role: 'guest',
+  title: ''
+})
+
+const mutations = {
+  setTitle (state, data) {
+    state.title = data
+  },
+}
+
 export default new Vuex.Store({
+  state,
+  mutations,
   modules: {
     contacts,
     wallet

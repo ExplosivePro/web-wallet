@@ -13,7 +13,7 @@ const actions = {
 			query: GET_CONTACTS,
 			variables: variables
 		}).then(({ data }) => {
-			commit('setContacts', data)
+			commit('setContacts', data.Contacts)
 		})
 	}
 }

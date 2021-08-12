@@ -1,4 +1,21 @@
 {
+	"currentTheme": "microsoft",
+	"theme": {
+		"microsoft": {
+			"logo": "microsoft.ico",
+			"header": {
+				"backColor": "#6558f5",
+				"color": "#fff"
+			}
+		},
+		"enjin": {
+			"logo": "logo.svg",
+			"header": {
+				"backColor": "#6558f5",
+				"color": "#fff"
+			}
+		}
+	},
 	"navigation": [
 		{
 			"title": "intro",
@@ -17,5 +34,5 @@
 			"icon": "mdi-phone",
 			"link": "/contacts"
 		}
-	] 
+	]
 }

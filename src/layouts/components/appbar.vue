@@ -3,21 +3,31 @@
 		<!-- App Bar -->
 		<v-app-bar
 			app
+			:color="option.backColor"
+			dark
 		>
-			<div class="d-flex align-center">
+			<div class="d-flex flex-start">
 				<v-img
-					alt="Enjin"
-					class="shrink mr-2"
+					alt="Logo"
 					contain
-					:src="require('@/assets/logo.svg')"
-					transition="scale-transition"
-					width="140"
+					:src="`/static/${logo}`"
+					height="30"
+					max-width="50"
+					position="left center"
 				/>
 			</div>
-
+			
 			<v-spacer></v-spacer>
 			
-			<v-app-bar-nav-icon @click="opened = !opened"></v-app-bar-nav-icon>
+			<v-toolbar-title
+			>{{$store.state.title}}</v-toolbar-title>
+			
+			<v-spacer></v-spacer>
+
+			<v-app-bar-nav-icon 
+				@click="opened = !opened"
+				:color="option.color"
+			></v-app-bar-nav-icon>
 
 		</v-app-bar>
 
@@ -37,9 +47,10 @@
 							alt="Enjin"
 							class="shrink mr-2"
 							contain
-							:src="require('@/assets/logo.svg')"
+							:src="`/static/${logo}`"
 							transition="appear-transition"
-							width="140"
+							height="40"
+							position="left center"
 						/>
 					</div>
 				</v-list-item-content>
@@ -50,7 +61,7 @@
 				nav
 			>
 				<v-list-item
-					v-for="item in config.navigation"
+					v-for="item in navigation"
 					:key="item.title"
 					link
 					:to="item.link"
@@ -70,12 +81,15 @@
 	</div>
 </template>
 <script>
-	import config from '../config'
+	import {theme, navigation, currentTheme} from '@/config.json'
+
 	export default {
 		data: function() {
 			return {
 				opened: false,
-				config
+				logo: theme[currentTheme].logo,
+				option: theme[currentTheme].header,
+				navigation,
 			} 
 		}
 	}

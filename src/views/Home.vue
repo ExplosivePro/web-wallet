@@ -6,5 +6,8 @@
 
 <script>
   export default {
+    created: function () {
+      this.$store.commit('setTitle', this.$t('home'))
+    }
   }
 </script>

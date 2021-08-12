@@ -10,7 +10,8 @@ export default new Vuetify({
 				purple: {
 					darken6: "#2A2B56"
 				},
-				secondary: "#F4F7FA"
+				secondary: "#F4F7FA",
+				primary: "#2C88D9"
 			}
 		}
 	}

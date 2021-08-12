@@ -4,13 +4,13 @@
 </template>
 
 <script>
-import appLayout from '@/layouts/default'
+import AppLayout from '@/layouts/index'
 
 export default {
   name: 'App',
 
   components : {
-    appLayout
+    AppLayout
   },
   data: () => ({
     //
