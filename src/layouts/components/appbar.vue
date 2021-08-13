@@ -10,10 +10,10 @@
 				<v-img
 					alt="Logo"
 					contain
-					:src="`/static/${logo}`"
-					height="30"
-					max-width="50"
+					:src="`/static/${logo.file}`"
 					position="left center"
+					:height="logo.height"
+					:width="logo.width"
 				/>
 			</div>
 			
@@ -44,10 +44,10 @@
 				<v-list-item-content>
 					<div class="d-flex align-center">
 						<v-img
-							alt="Enjin"
+							alt="Logo"
 							class="shrink mr-2"
 							contain
-							:src="`/static/${logo}`"
+							:src="`/static/${logo.file}`"
 							transition="appear-transition"
 							height="40"
 							position="left center"
@@ -76,20 +76,25 @@
 						<v-list-item-title>{{ $t(item.title) }}</v-list-item-title>
 					</v-list-item-content>
 				</v-list-item>
+
 			</v-list>
 		</v-navigation-drawer>
 	</div>
 </template>
 <script>
-	import {theme, navigation, currentTheme} from '@/config.json'
+	import config from '@/config.json'
 
 	export default {
 		data: function() {
+			var theme = config.theme
+			var currentTheme =require(`@/themes/${theme}.json`)
+			currentTheme.logo.height = currentTheme.logo.height ? currentTheme.logo.height: 30
+			currentTheme.logo.width = currentTheme.logo.width ? currentTheme.logo.width: 50
 			return {
 				opened: false,
-				logo: theme[currentTheme].logo,
-				option: theme[currentTheme].header,
-				navigation,
+				logo: currentTheme.logo,
+				option: currentTheme.header,
+				navigation: config.navigation
 			} 
 		}
 	}

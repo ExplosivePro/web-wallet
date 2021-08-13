@@ -1,0 +1,10 @@
+{
+	"logo": {
+		"file": "enjin.svg",
+		"height": 40
+	},
+	"header": {
+		"backColor": "#fff",
+		"color": "#555555"
+	}
+}

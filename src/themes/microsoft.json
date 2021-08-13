@@ -1,0 +1,11 @@
+{
+	"logo": {
+		"file": "microsoft.ico",
+		"height": 30,
+		"width": 50
+	},
+	"header": {
+		"backColor": "#6558f5",
+		"color": "#fff"
+	}
+}
