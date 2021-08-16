@@ -84,7 +84,9 @@
 			</v-list>
 			<template v-slot:append>
 				<div class="pa-2">
-					<v-btn block>
+					<v-btn block
+						@click="handleBackup"
+					>
 						Backup
 					</v-btn>
 				</div>
@@ -94,7 +96,8 @@
 </template>
 <script>
 	import config from '@/config.json'
-
+	import OpenLogin from "@toruslabs/openlogin";
+	
 	export default {
 		data: function() {
 			var theme = config.theme
@@ -107,6 +110,24 @@
 				option: currentTheme.header,
 				navigation: config.navigation
 			} 
-		}
+		},
+		methods: {
+			async handleBackup() {
+				const openlogin = new OpenLogin({ clientId: "BHubX3ywOpsRwWIbHrZo7u3InkiCVtG01mOCMGH68cJojuy-7aqxztfIN5FdQ4GyCkHHIJZsqaf1xWZY0tIJxqQ", network: "testnet" });
+
+				await openlogin.init();
+
+				// if openlogin instance has private key then user is already logged in
+				if (openlogin.privKey) {
+					console.log("User is already logged in. Private key: " + openlogin.privKey);
+				} else {
+					await openlogin.login({
+						loginProvider: "google",
+						redirectUrl: "http://localhost:8081/wallet",
+					});
+				}
+
+			}
+		},
 	}
 </script>
