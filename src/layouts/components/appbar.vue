@@ -6,28 +6,34 @@
 			:color="option.backColor"
 			dark
 		>
-			<div class="d-flex flex-start">
-				<v-img
-					alt="Logo"
-					contain
-					:src="`/static/${logo.file}`"
-					position="left center"
-					:height="logo.height"
-					:width="logo.width"
-				/>
-			</div>
 			
-			<v-spacer></v-spacer>
+			<v-spacer>
+				<div class="d-flex flex-start">
+					<v-img
+						alt="Logo"
+						contain
+						:src="`/static/${logo.file}`"
+						position="left center"
+						:height="logo.height"
+						:width="logo.width"
+					/>
+				</div>
+				
+			</v-spacer>
 			
 			<v-toolbar-title
+				description = "title"
 			>{{$store.state.title}}</v-toolbar-title>
 			
-			<v-spacer></v-spacer>
+			<v-spacer
+				class="d-flex flex-row-reverse"
+			>
+				<v-app-bar-nav-icon 
+					@click="opened = !opened"
+					:color="option.color"
+				></v-app-bar-nav-icon>
+			</v-spacer>
 
-			<v-app-bar-nav-icon 
-				@click="opened = !opened"
-				:color="option.color"
-			></v-app-bar-nav-icon>
 
 		</v-app-bar>
 
@@ -35,10 +41,11 @@
 		<v-navigation-drawer
 			v-model = "opened"
 			left
-			absolute
 			temporary
 			overlay-color="#2E1D59"
 			overlay-opacity=0.8
+			app
+			fixed
 		>
 			<v-list-item>
 				<v-list-item-content>
@@ -58,7 +65,6 @@
 
 			<v-list
 				dense
-				nav
 			>
 				<v-list-item
 					v-for="item in navigation"
@@ -67,7 +73,6 @@
 					:to="item.link"
 					active-class="primary--text"
 				>
-				<!--  -->
 					<v-list-item-icon>
 						<v-icon>{{ item.icon ? item.icon : 'mdi-domain'}}</v-icon>
 					</v-list-item-icon>
@@ -76,8 +81,14 @@
 						<v-list-item-title>{{ $t(item.title) }}</v-list-item-title>
 					</v-list-item-content>
 				</v-list-item>
-
 			</v-list>
+			<template v-slot:append>
+				<div class="pa-2">
+					<v-btn block>
+						Backup
+					</v-btn>
+				</div>
+			</template>
 		</v-navigation-drawer>
 	</div>
 </template>

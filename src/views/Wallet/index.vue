@@ -28,6 +28,7 @@
     components: {
       OverviewListItem
     },
+
     computed: mapState({
       overview: state => state.wallet.overview
     }),
@@ -36,6 +37,9 @@
       ...mapActions({
         getOverview: 'wallet/getOverview'
       })
+    },
+    created: function () {
+      this.$store.commit('setTitle', this.$t('wallet.title'))
     },
     mounted: function() {
       this.getOverview()

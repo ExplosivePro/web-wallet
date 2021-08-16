@@ -48,6 +48,11 @@
         getBulk: 'contacts/getContacts'
       })
     },
+
+    created: function () {
+      this.$store.commit('setTitle', this.$t('contacts.title'))
+    },
+    
     mounted: function() {
       this.getBulk()
     }
