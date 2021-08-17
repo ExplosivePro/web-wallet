@@ -30,9 +30,16 @@
     },
 
     computed: mapState({
-      overview: state => state.wallet.overview
+      overview: state => state.wallet.data
     }),
 
+    data: function() {
+      return {
+        items: [
+          'web', 'shopping', 'videos', 'images', 'news',
+        ]
+      }
+    },
     methods: {
       ...mapActions({
         getOverview: 'wallet/getOverview'

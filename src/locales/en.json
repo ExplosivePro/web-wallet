@@ -8,14 +8,17 @@
   "wallet": {
     "title": "Wallet",
     "search": "Search by Name, ENS or Address",
-    "asset": "Assets",
-    "create": "CREATE WALLET"
+    "create": "CREATE WALLET",
+    "login": "OPEN WALLET"
+  },
+  "assets": {
+    "title": "Assets"
   },
   "footer": {
     "share": "Share",
     "secureMyWallet": "Secure my Wallet",
     "whatIsThis": "Help, what is this?",
     "claim": "Claim"
-  }
-
+  },
+  "warning_msg": "Be careful. If someone told you that you can do something by opening this window, you are scammed."
 }

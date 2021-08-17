@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import contacts from './modules/contacts'
 import wallet from './modules/wallet'
+import assets from './modules/assets'
 
 Vue.use(Vuex)
 
@@ -25,7 +26,8 @@ export default new Vuex.Store({
   state,
   mutations,
   modules: {
+    assets,
     contacts,
     wallet
-  },
+  }
 })

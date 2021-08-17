@@ -23,7 +23,7 @@
 		props: ['data'],
 		computed: {
 			itemUrl: function () {
-				return `/wallet/assets/${this.data.id}`
+				return `/assets/${this.data.id}`
 			}
 		}
 	}

@@ -13,11 +13,6 @@
 				<h4 class="col-8 col">{{this.data.metadata.name}}</h4>
 				<span class="col-4 col">{{this.data.metadata.properties ? this.data.metadata.properties.Rarity: ""}}</span>
 				<p class="col-12">{{this.data.metadata.description}}</p>
-				<v-row class="px-8">
-					<v-col cols="10" offset="1" md="3" offset-md="9">
-						<v-btn class="primary col-12">{{$t('footer.secureMyWallet')}}</v-btn>
-					</v-col>
-				</v-row>
 			</v-col>
 
 		</v-row>
@@ -28,7 +23,7 @@
 	export default {
 		computed: {
 			data: function () {
-				return this.$store.state.wallet.assets.filter(item => item.id === this.$route.params.id)[0]
+				return this.$store.state.assets.data.filter(item => item.id === this.$route.params.id)[0]
 			}
 		}
 	}

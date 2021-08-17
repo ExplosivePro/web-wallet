@@ -1,12 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Contacts from '../views/Contacts'
-import Wallet from '../views/Wallet'
-import CreateWallet from '../views/Wallet/create'
 
-import AssetDetail from '../views/Wallet/AssetDetail'
-import Assets from '../views/Wallet/Assets'
+const CreateWallet = () => import('../views/Wallet/create');
 
 Vue.use(VueRouter)
 
@@ -14,12 +9,12 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: Home
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
   {
     path: '/contacts',
     name: 'Contacts',
-    component: Contacts
+    component: () => import(/* webpackChunkName: "contacts" */ '../views/Contacts')
   },
   {
     path: '/wallet/create',
@@ -31,39 +26,26 @@ const routes = [
     }
   },
   {
-    path: '/wallet/assets',
+    path: '/assets',
     name: 'Assets',
-    component: Assets
+    component: () => import(/* webpackChunkName: "assets" */ '../views/Assets')
   },
   {
-    path: '/wallet/assets/:id',
+    path: '/assets/:id',
     name: 'AssetDetail',
-    component: AssetDetail
+    component: () => import(/* webpackChunkName: "assetDetail" */ '../views/Wallet/AssetDetail')
   },
   {
     path: '/wallet',
     name: 'Wallet',
-    component: Wallet,
+    component: () => import(/* webpackChunkName: "wallet" */ '../views/Wallet'),
+
     meta: {
       role: 'user'
     }
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
+  }, {
     path: '/',
-    name: 'CreateWallet',
-    component: CreateWallet,
-    meta: {
-      role: 'guest',
-      layout: 'login'
-    }
+    redirect: '/wallet/create'
   }
 ]
 

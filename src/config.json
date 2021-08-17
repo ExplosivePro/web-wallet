@@ -10,6 +10,10 @@
 			"icon": "mdi-wallet",
 			"link": "/wallet"
 		}, {
+			"title": "assets.title",
+			"icon": "mdi-gamepad-variant",
+			"link": "/assets"
+		}, {
 			"title": "settings",
 			"icon": "mdi-cog",
 			"link": "/settings"
