@@ -21,8 +21,10 @@ export default {
     }
   },
   mounted() {
-    logger.setBodyStyle({ color: 'red' });
-    logger.log(this.$t('warning_msg'));
+    logger.setStyle({ color: 'white', backColor: '#f00', size: "2rem" })
+    logger.log(this.$t('warning.title'))
+    logger.setStyle({ color: '#222', backColor: '#fff', size: "  1.5rem" })
+    logger.log(this.$t('warning.content'))
   }
 };
 </script>

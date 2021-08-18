@@ -2,7 +2,7 @@
 	"theme": "microsoft",
 	"navigation": [
 		{
-			"title": "intro",
+			"title": "intro.title",
 			"icon": "mdi-view-dashboard",
 			"link": "/home"
 		}, {
@@ -14,7 +14,7 @@
 			"icon": "mdi-gamepad-variant",
 			"link": "/assets"
 		}, {
-			"title": "settings",
+			"title": "settings.title",
 			"icon": "mdi-cog",
 			"link": "/settings"
 		}, {

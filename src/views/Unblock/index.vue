@@ -2,10 +2,10 @@
 	<v-container v-if="$store.state.role==='guest'" class="d-flex flex-column full-height" style="height: 95vh">
 		<v-spacer></v-spacer>
 		<v-btn color="primary" @click="create" class="mb-4">
-			{{ $t('wallet.create') }}
+			{{ $t('unblock.create') }}
 		</v-btn>
 		<v-btn color="primary" @click="login" class="mb-4">
-			{{ $t('wallet.login') }}
+			{{ $t('unblock.login') }}
 		</v-btn>
 	</v-container>
 
@@ -14,13 +14,13 @@
 	export default {
 		methods: {
 			create: function () {
-				localStorage.setItem('wallet-key', '0x123')
-				this.$store.commit('setRole', 'user')
+				this.$router.push('/unblock/create')
 			},
 			login: function () {
-				console.log("login");
+				this.$router.push('/unblock/login')
 			}
 		},
+
 		updated() {
 			if (this.$store.state.role === 'user') {
 				this.$router.push('/wallet')

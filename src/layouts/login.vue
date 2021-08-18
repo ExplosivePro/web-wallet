@@ -5,7 +5,9 @@
     <v-main class="secondary">
 
       <!-- Provides the application the proper gutter -->
-      <v-container fluid>
+      <v-container fluid
+        style="height:100vh"
+      >
 
         <!-- If using vue-router -->
         <router-view></router-view>

@@ -1,26 +1,24 @@
 {
   "intro": {
-    "title": "Home"
+    "title": "主页"
   },
   "contacts": {
-    "title": "Contacts",
+    "title": "联系人",
     "search": "Search by Name, ENS or Address"
   },
   "wallet": {
-    "title": "Wallet",
-    "search": "Search by Name, ENS or Address",
-    "create": "CREATE WALLET",
-    "login": "OPEN WALLET"
+    "title": "钱包",
+    "search": "Search by Name, ENS or Address"
   },
   "unblock": {
-    "create": "CREATE WALLET",
-    "login": "OPEN WALLET"
+    "create": "创造钱包",
+    "login": "使用钱包"
   },
   "assets": {
-    "title": "Assets"
+    "title": "资产"
   },
   "settings": {
-    "title": "Settings"
+    "title": "设置"
   },
   "footer": {
     "share": "Share",
@@ -33,7 +31,7 @@
     "content": "This panel is for developers. If someone told you to do something here, you are scammed and will let them use your money!"
   },
   "form": {
-    "required": "Required",
+    "required": "必需的",
     "invalid": "{msg} must be valid"
   }
 }
