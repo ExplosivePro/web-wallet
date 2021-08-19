@@ -7,7 +7,7 @@
 	>
 		<v-spacer />
 		<v-card
-			class="px-4 py-4"
+			class="pa-4"
 		>
 			<v-form
 				ref="form"

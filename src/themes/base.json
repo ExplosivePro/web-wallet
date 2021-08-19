@@ -1,0 +1,10 @@
+{
+	"logo": {
+		"height": 30,
+		"width": 48
+	},
+	"header": {
+		"backColor": "#6558f5",
+		"color": "#fff"
+	}
+}

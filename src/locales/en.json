@@ -22,6 +22,9 @@
   "settings": {
     "title": "Settings"
   },
+  "qrscan": {
+    "title": "QR Code Scan"
+  },
   "footer": {
     "share": "Share",
     "secureMyWallet": "Secure my Wallet",

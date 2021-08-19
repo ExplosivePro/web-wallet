@@ -26,14 +26,14 @@
 			>{{$store.state.title}}</v-toolbar-title>
 			
 			<v-spacer
-				class="d-flex flex-row-reverse"
+				class="d-flex flex-row-reverse align-center"
 			>
 				<v-app-bar-nav-icon 
-					@click="opened = !opened"
+					@click="toggleDrawer"
 					:color="option.color"
 				></v-app-bar-nav-icon>
-			</v-spacer>
 
+			</v-spacer>
 
 		</v-app-bar>
 
@@ -95,38 +95,48 @@
 	</div>
 </template>
 <script>
+	import OpenLogin from "@toruslabs/openlogin"
+	// import AppDrawer from "./drawer"
+
 	import config from '@/config.json'
-	import OpenLogin from "@toruslabs/openlogin";
+	import baseThemeConfig from '@/themes/base.json'
 	
 	export default {
+		components: {
+			// AppDrawer
+		},
 		data: function() {
 			var theme = config.theme
-			var currentTheme =require(`@/themes/${theme}.json`)
-			currentTheme.logo.height = currentTheme.logo.height ? currentTheme.logo.height: 30
-			currentTheme.logo.width = currentTheme.logo.width ? currentTheme.logo.width: 50
+			var themeConfig = {
+				...baseThemeConfig,
+				...require(`@/themes/${theme}.json`)
+			}
 			return {
 				opened: false,
-				logo: currentTheme.logo,
-				option: currentTheme.header,
-				navigation: config.navigation
+				logo: themeConfig.logo,
+				option: themeConfig.header,
+				navigation: config.navigation,
+				dialog: false
 			} 
 		},
 		methods: {
 			async handleBackup() {
-				const openlogin = new OpenLogin({ clientId: "BHubX3ywOpsRwWIbHrZo7u3InkiCVtG01mOCMGH68cJojuy-7aqxztfIN5FdQ4GyCkHHIJZsqaf1xWZY0tIJxqQ", network: "testnet" });
+				const openlogin = new OpenLogin({ clientId: "BHubX3ywOpsRwWIbHrZo7u3InkiCVtG01mOCMGH68cJojuy-7aqxztfIN5FdQ4GyCkHHIJZsqaf1xWZY0tIJxqQ", network: "testnet" })
 
-				await openlogin.init();
+				await openlogin.init()
 
 				// if openlogin instance has private key then user is already logged in
 				if (openlogin.privKey) {
-					console.log("User is already logged in. Private key: " + openlogin.privKey);
+					console.log("User is already logged in. Private key: " + openlogin.privKey)
 				} else {
 					await openlogin.login({
 						loginProvider: "google",
 						redirectUrl: "http://localhost:8081/wallet",
-					});
+					})
 				}
-
+			},
+			toggleDrawer() {
+				this.opened = !this.opened
 			}
 		},
 	}

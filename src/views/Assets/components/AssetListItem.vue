@@ -1,7 +1,7 @@
 <template>
 	<v-col cols="12" md="4">
 		<v-card
-			class=" py-2 px-2"
+			class=" pa-2"
 			:to="itemUrl"
 		>
 			<v-row>

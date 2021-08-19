@@ -56,10 +56,12 @@ const routes = [
     path: '/wallet',
     name: 'Wallet',
     component: () => import(/* webpackChunkName: "wallet" */ '../views/Wallet'),
+  }, {
 
-    meta: {
-      role: 'user'
-    }
+    path: '/qr-scan',
+    name: 'QRScan',
+    component: () => import(/* webpackChunkName: "qrscan" */ '../views/QRScan'),
+
   }, {
     path: '*',
     redirect: '/wallet'
@@ -75,7 +77,7 @@ const router = new VueRouter({
 
 router.beforeEach(async (to, from, next) => {
 
-  if (to.meta.role === 'user' && store.state.role  !== 'user') {
+  if (to.meta.role !== 'guest' && store.state.role  !== 'user') {
     next({ path: '/unblock' })
   } else if(to.meta.role === 'guest' && store.state.role  === 'user') {
     next({ path: '/wallet' })

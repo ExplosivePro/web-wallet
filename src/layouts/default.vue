@@ -3,7 +3,7 @@
     <enjin-appbar />
 
     <!-- Sizes your content based upon application components -->
-    <v-main class="secondary">
+    <v-main class="secondary overflow-x-hidden">
 
       <!-- Provides the application the proper gutter -->
       <v-container fluid>

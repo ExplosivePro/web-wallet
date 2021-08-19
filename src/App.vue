@@ -16,9 +16,15 @@ export default {
   data: () => ({
   }),
   created() {
+
     if (localStorage.getItem('wallet-key')) {
       this.$store.commit('setRole', 'user')
     }
+
+    if (localStorage.lang) {
+      this.$i18n.locale = localStorage.lang 
+    }
+    
   },
   mounted() {
     logger.setStyle({ color: 'white', backColor: '#f00', size: "2rem" })

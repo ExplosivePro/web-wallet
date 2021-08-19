@@ -1,7 +1,7 @@
 <template>
 	<v-col cols="12">
 		<v-card
-			class="py-2 px-2"
+			class="pa-2"
 		>
 			<h2>{{data.chain}}</h2>
 			<v-row

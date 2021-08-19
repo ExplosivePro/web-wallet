@@ -10,51 +10,44 @@
         </div>
       </v-col>
     </v-row>
-    <v-row>
-      <v-col sm="12" md="8" offset-md="2">
-        <v-card>
-          <v-card-title>
-            <v-text-field
-              append-icon="mdi-magnify"
-              :outlined="false"
-              :placeholder="$t('contacts.search')"
-              single-line
-              hide-details
-            ></v-text-field>
-          </v-card-title>
-        </v-card>
+    <apollo-query
+      :query="require('./gql/getContacts.gql')"
+      :variables="{ 'dictionary':[{
+        'id': 'Savinkin'
+      }] }"
+      clientId="contacts"
+      class="col-12 pa-0"
+    >
+      <template v-slot="{ result: { error, data }, isLoading }">
+        <div v-if="isLoading" class="loading apollo">Loading...</div>
+        <div
+          v-else-if="error"
+        >
+          Error
+        </div>
 
-        <recovery-panel />
+        <div
+          v-else-if="data"
+        >
+          <p
+            v-for="item in data.Contacts"
+            :key="item.id"
+          >{{item.data}}</p>
+        </div>
 
-      </v-col>
-    </v-row>
+        <div v-else class="no-result apollo">No result :(</div>
+      </template>
+      
+    </apollo-query>
+    
   </v-container>
 </template>
 
 <script>
-  import { mapState, mapActions } from 'vuex'
-  import RecoveryPanel from '@/components/RecoveryPanel'
-
   export default {
-    components: {
-      RecoveryPanel
-    },
-    computed: mapState({
-      contacts: state => state.contacts.data
-    }),
-
-    methods: {
-      ...mapActions({
-        getBulk: 'contacts/getContacts'
-      })
-    },
-
+    
     created: function () {
       this.$store.commit('setTitle', this.$t('contacts.title'))
     },
-    
-    mounted: function() {
-      this.getBulk()
-    }
   }
 </script>
