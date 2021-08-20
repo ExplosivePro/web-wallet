@@ -6,8 +6,13 @@
 		elevation = "0"
 		v-if="$store.state.role !== 'user'"
 	>
-		<v-stepper-items>
-			<v-stepper-content step="1">
+		<v-stepper-items
+			class="pa-0"
+		>
+			<v-stepper-content
+				step="1"
+				class="pa-0"
+			>
 				<sub-form
 					:rules="email.rules" 
 					:handleSubmit="handleEmail"
@@ -15,7 +20,10 @@
 				/>
 			</v-stepper-content>
 			
-			<v-stepper-content step="2">
+			<v-stepper-content
+				step="2"
+				class="pa-0"
+			>
 				<sub-form
 					:handleSubmit="handlePassword"
 					:rules="password.rules" 
@@ -23,7 +31,10 @@
 					type="password"
 				/>
 			</v-stepper-content>
-			<v-stepper-content step="3">
+			<v-stepper-content
+				step="3"
+				class="pa-0"
+			>
 				<v-btn
 					color="primary"
 					@click="handleConfirm"

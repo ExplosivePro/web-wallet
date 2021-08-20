@@ -1,12 +1,12 @@
 <template>
 	<v-container fluid>
 		<v-row>
-			<v-col cols="7">
+			<v-col cols="6">
 				<span class="line-2">
 					Language
 				</span>
 			</v-col>
-			<v-col cols="5">
+			<v-col cols="6" class="px-0">
 				<language-bar />
 			</v-col>
 		</v-row>

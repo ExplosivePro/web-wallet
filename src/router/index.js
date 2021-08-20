@@ -63,6 +63,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "qrscan" */ '../views/QRScan'),
 
   }, {
+    path: '/backup',
+    name: 'BackUp',
+    component: () => import(/* webpackChunkName: "others" */ '../views/BackUp'),
+    meta: {
+      hideFooter: true
+    }
+  }, {
     path: '*',
     redirect: '/wallet'
   }

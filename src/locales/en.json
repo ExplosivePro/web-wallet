@@ -38,5 +38,17 @@
   "form": {
     "required": "Required",
     "invalid": "{msg} must be valid"
+  },
+  "backup": {
+    "title": "BackUp",
+    "header": "Protect your blockchain collectibles!",
+    "important": "IMPORTTANT: To avoid the possibility of loss, please back up your wallet using one of these options:",
+    "recommend": "Recommended Method:",
+    "install": "Install the Enjin Mobile Wallet",
+    "alternative": "Alternative method:",
+    "facebook_login": "Login to Facebook",
+    "google_login": "Login to Google",
+    "sms_login": "SMS",
+    "mail_login": "Email"
   }
 }

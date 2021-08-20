@@ -3,7 +3,8 @@
 		app
 		:padless="true"
 		height = "80"
-		class="flex-row flex-center"
+		class="flex-row flex-center transparent"
+		v-if="!$route.meta.hideFooter"
 	>
 		<v-card
 			flat

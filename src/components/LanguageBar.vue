@@ -1,7 +1,7 @@
 <template>
 	<v-menu v-model="languageMenu" offset-y>
 		<template v-slot:activator="{ on, attrs }">
-			<v-btn class="text-capitalize" v-bind="attrs" v-on="on" text>
+			<v-btn class="text-capitalize px-0" v-bind="attrs" v-on="on" text>
 				<v-icon left>mdi-translate</v-icon>
 				{{ activeLang }}
 				<v-icon small right>mdi-menu-down</v-icon>

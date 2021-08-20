@@ -13,18 +13,12 @@ export default {
   components : {
     AppLayout
   },
-  data: () => ({
-  }),
   created() {
-
     if (localStorage.getItem('wallet-key')) {
       this.$store.commit('setRole', 'user')
     }
 
-    if (localStorage.lang) {
-      this.$i18n.locale = localStorage.lang 
-    }
-    
+    this.$i18n.locale = localStorage.lang ? localStorage.lang : 'en' 
   },
   mounted() {
     logger.setStyle({ color: 'white', backColor: '#f00', size: "2rem" })
