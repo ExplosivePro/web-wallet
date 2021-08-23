@@ -120,19 +120,6 @@
 		methods: {
 			async handleBackup() {
 				this.$router.push('/backup');
-				// const openlogin = new OpenLogin({ clientId: "BHubX3ywOpsRwWIbHrZo7u3InkiCVtG01mOCMGH68cJojuy-7aqxztfIN5FdQ4GyCkHHIJZsqaf1xWZY0tIJxqQ", network: "testnet" })
-
-				// await openlogin.init()
-
-				// // if openlogin instance has private key then user is already logged in
-				// if (openlogin.privKey) {
-				// 	console.log("User is already logged in. Private key: " + openlogin.privKey)
-				// } else {
-				// 	await openlogin.login({
-				// 		loginProvider: "google",
-				// 		redirectUrl: "http://localhost:8081/wallet",
-				// 	})
-				// }
 			},
 			toggleDrawer() {
 				this.opened = !this.opened

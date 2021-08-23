@@ -11,33 +11,32 @@
       </v-col>
     </v-row>
     <v-row>
-        <apollo-query
-          :query="require('./gql/getAssetsBulk.gql')"
-          :variables="{ 'dictionary':[] }"
-          clientId="enjinx"
-          class="col-12 pa-0"
-        >
-          <template v-slot="{ result: { error, data }, isLoading }">
-            <div v-if="isLoading" class="loading apollo">Loading...</div>
+      <apollo-query
+        :query="require('./gql/getAssetsBulk.gql')"
+        :variables="{ 'dictionary':[] }"
+        clientId="enjinx"
+        class="col-12 pa-0"
+      >
+        <template v-slot="{ result: { error, data }, isLoading }">
+          <div v-if="isLoading" class="loading apollo">Loading...</div>
 
-            <asset-list-item
-              v-else-if="error"
-              v-for="item in demo"
-              :key="item.id"
-              :data = "item"
-            />
+          <asset-list-item
+            v-else-if="error"
+            v-for="item in demo"
+            :key="item.id"
+            :data = "item"
+          />
 
-            <asset-list-item
-              v-else-if="data"
-              v-for="item in data"
-              :key="item.id"
-              :data = "item"
-            />
+          <asset-list-item
+            v-else-if="data"
+            v-for="item in data"
+            :key="item.id"
+            :data = "item"
+          />
 
-            <div v-else class="no-result apollo">No result :(</div>
-          </template>
-          
-        </apollo-query>
+          <div v-else class="no-result apollo">No result :(</div>
+        </template>
+      </apollo-query>
     </v-row>
   </v-container>
 </template>
@@ -73,9 +72,6 @@
 
     created: function () {
       this.$store.commit('setTitle', this.$t('assets.title'))
-    },
-
-    mounted: function() {
     }
   }
 </script>

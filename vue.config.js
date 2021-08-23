@@ -9,6 +9,9 @@ module.exports = {
       localeDir: 'locales',
       enableInSFC: false
     }
+  },
+  devServer: {
+    host: 'sav.web-wallet.com'
   }
 }
 

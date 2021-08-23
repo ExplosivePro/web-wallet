@@ -6,7 +6,9 @@
 			</v-col>
 		</v-row>
 		<v-row>
-			{{$t('backup.important')}}
+			<v-col cols="12">
+				{{$t('backup.important')}}
+			</v-col>
 		</v-row>
 
 		<v-row class="mt-12">
@@ -32,46 +34,92 @@
 		</v-row>
 
 		<v-row>
-			<v-col cols="12"  class="pa-1">
-				<v-btn class="mx-4 primary" width="80vw">{{$t('backup.facebook_login')}} </v-btn>
-			</v-col>
 			<v-col cols="12" class="pa-1">
-				<v-btn 
-					class="mx-4 primary" 
+				<v-btn
+					v-for="btn in btns"
+					:key="btn.label"
+					class="mx-4 mt-2 primary" 
 					width="80vw"
-					@click="googleLogin"
+					@click="btn.handler"
 				> 
-					{{$t('backup.google_login')}}
+					{{$t(btn.label)}}
 				</v-btn>
 			</v-col>
-			<v-col cols="12" class="pa-1">
-				<v-btn class="mx-4 primary" width="80vw"> {{$t('backup.sms_login')}} </v-btn>
-			</v-col>
-			<v-col cols="12" class="pa-1">
-				<v-btn class="mx-4 primary" width="80vw"> {{$t('backup.mail_login')}} </v-btn>
-			</v-col>
 		</v-row>
+		<a href="https://accounts.google.com/o/oauth2/v2/auth?response_type=token&access_type=online&client_id=7743242192-sak2hk7i5ioqg8dva6dbnn97qf6iba74.apps.googleusercontent.com&redirect_uri=http://sav.web-wallet.com:8080&scope=email&state&prompt=none">Google</a>
 
 	</v-container>
 </template>
 <script>
 import OpenLogin from "@toruslabs/openlogin"
 export default {
-	methods: {
-		async googleLogin() {
-			const openlogin = new OpenLogin({ clientId: "BHubX3ywOpsRwWIbHrZo7u3InkiCVtG01mOCMGH68cJojuy-7aqxztfIN5FdQ4GyCkHHIJZsqaf1xWZY0tIJxqQ", network: "testnet" })
-
-			await openlogin.init()
-
-			// if openlogin instance has private key then user is already logged in
-			if (openlogin.privKey) {
-				console.log("User is already logged in. Private key: " + openlogin.privKey)
-			} else {
-				await openlogin.login({
-					loginProvider: "google",
-					redirectUrl: "http://localhost:8080/wallet",
-				})
+	data() {
+		return {
+			btns: [
+				{
+					label: 'backup.facebook_login'	
+				},
+				{
+					handler: () => this.authenticate('google'),
+					label: 'backup.google_login'	
+				},
+				{
+					label: 'backup.sms_login'	
+				},
+				{
+					label: 'backup.mail_login'	
+				}
+			],
+			privKey: "",
+			verifier: {
+				clientId: process.env.VUE_APP_TORUS_CLIENT_ID ? process.env.VUE_APP_TORUS_CLIENT_ID: "BHubX3ywOpsRwWIbHrZo7u3InkiCVtG01mOCMGH68cJojuy-7aqxztfIN5FdQ4GyCkHHIJZsqaf1xWZY0tIJxqQ",
+				loginProvider: "google",
 			}
+		}
+	},
+	methods: {
+		authenticate: function (provider) {
+			console.log(provider)
+			const testURL = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=token&access_type=online&client_id=7743242192-sak2hk7i5ioqg8dva6dbnn97qf6iba74.apps.googleusercontent.com&redirect_uri=http://sav.web-wallet.com:8080/backup&scope=email&state&prompt=none';
+			const myInit = {
+				method: 'HEAD',
+				mode: 'no-cors',
+			}
+
+			const myRequest = new Request(testURL, myInit);
+
+			fetch(myRequest).then(function(response) {
+				console.log(response.text());
+				console.log(response.url);
+				console.log(response.json());
+				return response;
+			}).then(function(response) {
+				console.log(response);
+			}).catch(function(e){
+				console.log(e);
+			});
+		}
+		// async googleLogin() {
+		// 	await this.sdk.login({
+		// 		loginProvider: this.verifier.loginProvider,
+		// 		redirectUrl: "http://localhost:8080/wallet"
+		// 	})
+		// }
+	},
+	async mounted() {
+
+		console.log(this.$router)
+		if (this.sdk) return
+
+		this.sdk = new OpenLogin({
+			clientId: this.verifier.clientId,
+			network: "testnet"
+		})
+
+		await this.sdk.init()
+
+		if (this.sdk.privKey) {
+			console.log("Private Key", this.sdk.privKey)
 		}
 	}
 }

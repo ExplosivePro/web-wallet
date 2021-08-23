@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <enjin-appbar />
+    <the-appbar />
 
     <!-- Sizes your content based upon application components -->
     <v-main class="secondary overflow-x-hidden">
@@ -12,18 +12,18 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-    <enjin-footer />
+    <the-footer />
   </v-app>
 </template>
 
 <script>
-  import enjinAppbar from './components/appbar'
-  import enjinFooter from './components/footer'
+  import theAppbar from './components/appbar'
+  import theFooter from './components/footer'
 
   export default {
     components: {
-      enjinAppbar,
-      enjinFooter
+      theAppbar,
+      theFooter
     },
     data: function () {
       return {

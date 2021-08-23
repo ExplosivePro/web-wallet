@@ -18,7 +18,7 @@ export default {
       this.$store.commit('setRole', 'user')
     }
 
-    this.$i18n.locale = localStorage.lang ? localStorage.lang : 'en' 
+    this.$i18n.locale = localStorage.lang ? localStorage.lang : 'en'
   },
   mounted() {
     logger.setStyle({ color: 'white', backColor: '#f00', size: "2rem" })

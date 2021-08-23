@@ -26,11 +26,6 @@ const routes = [
     path: '/unblock/create',
     name: 'UnblockCreate',
     component: () => import(/* webpackChunkName: "unblock" */ '../views/Unblock/Create'),
-
-    meta: {
-      role: 'guest',
-      layout: 'login'
-    }
   }, {
     path: '/settings',
     name: 'Settings',
@@ -41,7 +36,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "unblock" */ '../views/Unblock/Login'),
 
     meta: {
-      role: 'guest',
       layout: 'login'
     }
   },{
@@ -51,11 +45,14 @@ const routes = [
   }, {
     path: '/assets/:id',
     name: 'AssetDetail',
-    component: () => import(/* webpackChunkName: "assetDetail" */ '../views/Wallet/AssetDetail')
+    component: () => import(/* webpackChunkName: "assetDetail" */ '../views/AssetDetail')
   }, {
     path: '/wallet',
     name: 'Wallet',
     component: () => import(/* webpackChunkName: "wallet" */ '../views/Wallet'),
+    meta: {
+      role: 'user'
+    }
   }, {
 
     path: '/qr-scan',
@@ -71,7 +68,7 @@ const routes = [
     }
   }, {
     path: '*',
-    redirect: '/wallet'
+    redirect: '/home'
   }
 ]
 
@@ -84,7 +81,7 @@ const router = new VueRouter({
 
 router.beforeEach(async (to, from, next) => {
 
-  if (to.meta.role !== 'guest' && store.state.role  !== 'user') {
+  if (to.meta.role === 'user' && store.state.role  !== 'user') {
     next({ path: '/unblock' })
   } else if(to.meta.role === 'guest' && store.state.role  === 'user') {
     next({ path: '/wallet' })

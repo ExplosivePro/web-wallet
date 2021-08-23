@@ -18,6 +18,5 @@
 			{{$t('footer.secureMyWallet')}}
 			</v-btn>
 		</v-card>
-		<!-- -->
 	</v-footer>
 </template>

@@ -20,7 +20,7 @@
 
 				<v-img
 					:src="qr_img"
-					:height="qr_img ? '' : '90vmin'"
+					height="90vmin"
 					width="100vmin"
 					@click="selectFile"
 					:class="[qr_img ? '' : 'border-dash', 'ma-auto']"
@@ -40,6 +40,7 @@
 		<v-row v-else>
 			<qrcode-stream @decode="onDecode" />
 		</v-row>
+		<slot/>
 	</v-container>
 </template>
 <script>
@@ -49,9 +50,21 @@ export default {
 		QrcodeStream,
 		QrcodeCapture
 	},
+	props: ['setResult'],
+	computed: {
+		result: {
+			get: function() {
+				return this.$_result
+			},
+			set: function (value) {
+				this.$_result = value
+				this.setResult(value)
+			}
+		}
+	},
 	data () {
 		return {
-			result: '',
+			$_result: '',
 			mode: 0,
 			qr_img: null
 		}
@@ -64,7 +77,6 @@ export default {
 					content,
 				} = await promise
 				this.result = content
-
 			} catch (err) {
 
 				this.result = ""
@@ -73,7 +85,13 @@ export default {
 		},
 		selectFile() {
 			this.$refs.qrInput.$el.click()
+		},
+
+		onDecode (data) {
+			this.result = data
 		}
+	},
+	mounted() {
 	}
 }
 </script>

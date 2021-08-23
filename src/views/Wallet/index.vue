@@ -11,17 +11,37 @@
       </v-col>
     </v-row>
     <v-row>
-        <overview-list-item
-          v-for="item in overview"
-          :key="item.chain"
-          :data = "item"
-        />
+      <apollo-query
+        :query="require('./gql/getOverview.gql')"
+        clientId="enjinx"
+        class="col-12 pa-0"
+      >
+        <template v-slot="{ result: { error, data }, isLoading }">
+          <div v-if="isLoading" class="loading apollo">Loading...</div>
+
+          <overview-list-item
+            v-else-if="error"
+            v-for="item in demo"
+            :key="item.chain"
+            :data = "item"
+          />
+
+          <overview-list-item
+            v-else-if="data"
+            v-for="item in data"
+            :key="item.chain"
+            :data = "item"
+          />
+ 
+          <div v-else class="no-result apollo">No result :(</div>
+        </template>
+      </apollo-query>
+
     </v-row>
   </v-container>
 </template>
 
 <script>
-  import { mapState, mapActions } from 'vuex'
   import OverviewListItem from './components/OverviewListItem'
 
   export default {
@@ -29,27 +49,32 @@
       OverviewListItem
     },
 
-    computed: mapState({
-      overview: state => state.wallet.data
-    }),
-
     data: function() {
       return {
         items: [
           'web', 'shopping', 'videos', 'images', 'news',
+        ],
+        demo: [
+          {
+            "chain": "BTC",
+            "addresses": [
+              {
+                "address": "3828uLnVCCUwWdBEw8u3pARXoFUVZu7eH7",
+                "balances": [
+                  {
+                    "id": "bitcoin",
+                    "balance": "0",
+                    "price": null
+                  }
+                ]
+              }
+            ]
+          }
         ]
       }
-    },
-    methods: {
-      ...mapActions({
-        getOverview: 'wallet/getOverview'
-      })
     },
     created: function () {
       this.$store.commit('setTitle', this.$t('wallet.title'))
     },
-    mounted: function() {
-      this.getOverview()
-    }
   }
 </script>
