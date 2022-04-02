@@ -1,7 +1,20 @@
 {
 	"theme": "microsoft",
+	"layout": "vertical",
 	"navigation": [
 		{
+			"title": "history.title",
+			"icon": "mdi-view-dashboard",
+			"link": "/history"
+		}, {
+			"title": "receive.title",
+			"icon": "mdi-view-dashboard",
+			"link": "/receive"
+		}, {
+			"title": "send.title",
+			"icon": "mdi-view-dashboard",
+			"link": "/send"
+		}, {
 			"title": "intro.title",
 			"icon": "mdi-view-dashboard",
 			"link": "/home"
@@ -13,19 +26,6 @@
 			"title": "assets.title",
 			"icon": "mdi-gamepad-variant",
 			"link": "/assets"
-		}, {
-			"title": "qrscan.title",
-			"icon": "mdi-qrcode-scan",
-			"link": "/qr-scan"
-
-		}, {
-			"title": "settings.title",
-			"icon": "mdi-cog",
-			"link": "/settings"
-		}, {
-			"title": "contacts.title",
-			"icon": "mdi-phone",
-			"link": "/contacts"
 		}
 	]
 }

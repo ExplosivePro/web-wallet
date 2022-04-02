@@ -1,8 +1,0 @@
-query Contacts ($dictionary: [QueryContactInput]!) {
-  	Contacts(dictionary: $dictionary) {
-      id
-      data
-      updated
-      version
-    }
-}

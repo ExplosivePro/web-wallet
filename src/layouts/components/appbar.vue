@@ -6,7 +6,6 @@
 			:color="option.backColor"
 			dark
 		>
-			
 			<v-spacer>
 				<div class="d-flex flex-start">
 					<v-img
@@ -28,17 +27,18 @@
 			<v-spacer
 				class="d-flex flex-row-reverse align-center"
 			>
-				<v-app-bar-nav-icon 
+				<v-app-bar-nav-icon
+					v-if="!isVertical"
 					@click="toggleDrawer"
 					:color="option.color"
 				></v-app-bar-nav-icon>
 
 			</v-spacer>
-
 		</v-app-bar>
 
 		<!-- Drawer -->
 		<v-navigation-drawer
+			v-if="!isVertical"
 			v-model = "opened"
 			left
 			temporary
@@ -92,6 +92,7 @@
 				</div>
 			</template>
 		</v-navigation-drawer>
+
 	</div>
 </template>
 <script>
@@ -100,9 +101,7 @@
 	import baseThemeConfig from '@/themes/base.json'
 	
 	export default {
-		components: {
-			// AppDrawer
-		},
+		props: ['isVertical'],
 		data: function() {
 			var theme = config.theme
 			var themeConfig = {

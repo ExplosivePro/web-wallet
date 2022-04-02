@@ -13,19 +13,15 @@ import VueAuthenticate from 'vue-authenticate'
 Vue.use(VueAxios, axios)
 
 Vue.use(VueAuthenticate, {
-  baseUrl: 'http://sav.web-wallet.com/', // Your API domain
+  baseUrl: process.env.VUE_APP_SERVER_URL, // Your API domain
   
   providers: {
-    github: {
-      clientId: '',
-      redirectUri: 'http://sav.web-wallet.com:8080/auth/callback' // Your client app URL
-    },
     google: {
       name: 'google',
       url: '/auth/google',
       clientId: process.env.VUE_APP_GOOGLE_CLIENT_ID,
       authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-      redirectUri: 'http://sav.web-wallet.com:8080',
+      redirectUri: process.env.VUE_APP_BASE_URL,
       requiredUrlParams: ['scope'],
       optionalUrlParams: ['display'],
       scope: ['profile', 'email'],

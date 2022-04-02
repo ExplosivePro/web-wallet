@@ -8,11 +8,7 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
-  }, {
-    path: '/contacts',
-    name: 'Contacts',
-    component: () => import(/* webpackChunkName: "contacts" */ '../views/Contacts')
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home')
   }, {
     path: '/unblock',
     name: 'Unblock',
@@ -26,10 +22,6 @@ const routes = [
     path: '/unblock/create',
     name: 'UnblockCreate',
     component: () => import(/* webpackChunkName: "unblock" */ '../views/Unblock/Create'),
-  }, {
-    path: '/settings',
-    name: 'Settings',
-    component: () => import(/* webpackChunkName: "settings" */ '../views/Settings'),
   }, {
     path: '/unblock/login',
     name: 'UnblockLogin',
@@ -54,12 +46,6 @@ const routes = [
       role: 'user'
     }
   }, {
-
-    path: '/qr-scan',
-    name: 'QRScan',
-    component: () => import(/* webpackChunkName: "qrscan" */ '../views/QRScan'),
-
-  }, {
     path: '/backup',
     name: 'BackUp',
     component: () => import(/* webpackChunkName: "others" */ '../views/BackUp'),
@@ -80,7 +66,6 @@ const router = new VueRouter({
 
 
 router.beforeEach(async (to, from, next) => {
-
   if (to.meta.role === 'user' && store.state.role  !== 'user') {
     next({ path: '/unblock' })
   } else if(to.meta.role === 'guest' && store.state.role  === 'user') {

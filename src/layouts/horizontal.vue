@@ -24,12 +24,6 @@
     components: {
       theAppbar,
       theFooter
-    },
-    data: function () {
-      return {
-      }
-    },
-    methods: {
     }
   } 
 </script>

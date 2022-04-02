@@ -15,14 +15,3 @@
     </v-main>
   </v-app>
 </template>
-
-<script>
-  export default {
-    data: function () {
-      return {
-      }
-    },
-    methods: {
-    }
-  } 
-</script>

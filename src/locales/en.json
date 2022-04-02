@@ -2,10 +2,6 @@
   "intro": {
     "title": "Home"
   },
-  "contacts": {
-    "title": "Contacts",
-    "search": "Search by Name, ENS or Address"
-  },
   "wallet": {
     "title": "Wallet",
     "search": "Search by Name, ENS or Address",
@@ -19,11 +15,17 @@
   "assets": {
     "title": "Assets"
   },
-  "settings": {
-    "title": "Settings"
+  "history": {
+    "title": "History"
   },
-  "qrscan": {
-    "title": "QR Code Scan"
+  "send": {
+    "title": "Send"
+  },
+  "receive": {
+    "title": "Receive"
+  },
+  "exchange": {
+    "title": "Exchange"
   },
   "footer": {
     "share": "Share",

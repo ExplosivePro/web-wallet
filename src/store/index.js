@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 const state = () => ({
   role: 'guest',
-  title: ''
+  title: '',
+  tokenFromBeam: ''
 })
 
 const mutations = {
@@ -15,6 +16,10 @@ const mutations = {
 
   setRole (state, data) {
     state.role = data
+  },
+
+  setBeamFromToken(state, data) {
+    state.tokenFromBeam = data
   }
 }
 

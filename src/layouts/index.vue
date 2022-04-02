@@ -5,22 +5,36 @@
 </template>
 
 <script>
-import DefaultLayout from './default'
+import config from '@/config.json'
+import HorizontalLayout from './horizontal.vue'
+import VerticalLayout from './vertical.vue'
+import LoginLayout from './login.vue'
+
+const layouts = {
+  horizontal: HorizontalLayout,
+  vertical: VerticalLayout,
+  login: LoginLayout,
+}
+
 export default {
   name: "AppLayout",
-  data: () => ({
-    layout: DefaultLayout
-  }),
+  data: () => {
+    return {
+      layout: VerticalLayout
+    }
+  },
   watch: {
     $route: {
       immediate: true,
       async handler(route) {
-        try {
-          const component = await import(`@/layouts/${route.meta.layout}.vue`)
-          this.layout = component?.default || DefaultLayout
-        } catch (e) {
-          this.layout = DefaultLayout
+
+        if (!route.name) {
+          return;
         }
+        
+        let layout_key = route.meta.layout ? route.meta.layout : config.layout
+
+        this.layout = layouts[layout_key]
       }
     }
   }

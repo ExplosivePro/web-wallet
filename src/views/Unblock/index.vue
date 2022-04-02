@@ -1,11 +1,16 @@
 <template>
 	<v-container v-if="$store.state.role==='guest'" class="d-flex flex-column full-height" style="height: 95vh">
+
+		<div
+			class="text-h6 transition-swing"
+			:text="'text'"
+		>
+		</div>
+
 		<v-spacer></v-spacer>
+
 		<v-btn color="primary" @click="create" class="mb-4">
 			{{ $t('unblock.create') }}
-		</v-btn>
-		<v-btn color="primary" @click="login" class="mb-4">
-			{{ $t('unblock.login') }}
 		</v-btn>
 	</v-container>
 
@@ -16,9 +21,6 @@
 			create: function () {
 				this.$router.push('/unblock/create')
 			},
-			login: function () {
-				this.$router.push('/unblock/login')
-			}
 		},
 
 		updated() {
